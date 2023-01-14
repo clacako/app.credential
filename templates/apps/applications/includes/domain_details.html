@@ -1,0 +1,154 @@
+{% load static %}
+
+<!-- Header -->
+{% include "general/header.html" %}
+<!-- End header -->
+
+!-- Start right Content here -->
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <h4 class="mb-4 font-size-18">File Manager</h4> -->
+
+                <div class="d-xl-flex">
+                    <div class="w-100">
+                        <div class="d-md-flex">
+                            <div class="card filemanager-sidebar me-md-2">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="mb-4">
+                                            <div class="mb-3">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-light dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="mdi mdi-plus me-1"></i> Create New
+                                                    </button>
+                                                    
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item btn-show-modal-domain-insert" href="javascript:void(0)">
+                                                            <i class="mdi mdi-album me-1"></i>
+                                                            User
+                                                        </a>
+                                                      
+                                                        <a class="dropdown-item btn-show-modal-role-insert" href="javascript:void(0)">
+                                                            <i class="mdi mdi-album me-1"></i>
+                                                            Message
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <ul class="list-unstyled categories-list">
+                                                <li>
+                                                    <div class="custom-accordion">
+                                                        <!-- <a class="text-body fw-medium py-1 d-flex align-items-center" data-bs-toggle="collapse" href="#application-roles-collapse" role="button" aria-expanded="false" aria-controls="application-roles-collapse">
+                                                            <i class="mdi mdi-account-key font-size-16 text-primary me-2"></i>
+                                                            Roles
+                                                            <i class="mdi mdi-chevron-up accor-down-icon ms-auto"></i>
+                                                        </a> -->
+
+                                                        <div class="collapse show" id="application-roles-collapse">
+                                                            <div class="card border-0 shadow-none ps-2 mb-0">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <div id="ajax-application-roles-menu"></div>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
+                                                        <i class="mdi mdi-inbox text-muted font-size-16 me-2"></i>
+                                                        <span class="me-auto">
+                                                            Inbox
+                                                        </span>
+                                                        <span class="badge bg-success rounded-pill ms-2">01</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="w-100">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <div id="message-domain-users"></div>
+                                            <div id="ajax-domain-users"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card filemanager-sidebar ms-lg-2">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h5 class="font-size-15 mb-4">Domain Information</h5>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <div class="card border shadow-none mb-2">
+                                    <div class="p-2">
+                                        <div class="d-flex">
+                                            <div class="overflow-hidden me-auto">
+                                                <h5 class="font-size-13 text-truncate mb-1">Name</h5>
+                                                <p class="text-muted mb-0">{{ Domain.name }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="card border shadow-none mb-2">
+                                    <div class="p-2">
+                                        <div class="d-flex">
+                                            <div class="overflow-hidden me-auto">
+                                                <h5 class="font-size-13 text-truncate mb-1">URL Login</h5>
+                                                <p class="text-muted text-truncate mb-0">{{ Domain.url_name }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End content -->
+
+<!-- Modals -->
+<!-- Modal user insert -->
+<div class="modal fade" id="modal-user-insert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="ajax-modal-body-domain-insert"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+{% include "general/footer.html" %}
+<!-- End feader -->
+
+
+<script>
+    // Load
+    xload("ajax-domain-users", "{% url 'applications:domain-users' app_exid=Application.external_id domain_exid=Domain.external_id %}")
+
+</script>

@@ -1,0 +1,21 @@
+{% if Roles %}
+    {% for role in Roles %}
+        <li>
+            <a href="#" class="d-flex align-items-center">
+                <span class="me-auto">
+                    {{ role.name|title }}
+                </span>
+            </a>
+        </li>
+    {% endfor %}
+{% else %}
+    <li>
+        <a href="javascript:void(0)" class="d-flex align-items-center">
+            <span class="me-auto">
+                <strong>
+                    <i>No data found</i>
+                </strong>
+            </span>
+        </a>
+    </li>
+{% endif %}

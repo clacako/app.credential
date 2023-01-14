@@ -1,0 +1,21 @@
+{% if Domains %}
+    {% for domain in Domains %}
+        <li>
+            <a href="#" class="d-flex align-items-center">
+                <span class="me-auto">
+                    {{ domain.name|upper }}
+                </span>
+            </a>
+        </li>
+    {% endfor %}
+{% else %}
+    <li>
+        <a href="javascript:void(0)" class="d-flex align-items-center">
+            <span class="me-auto">
+                <strong>
+                    <i>No data found</i>
+                </strong>
+            </span>
+        </a>
+    </li>
+{% endif %}

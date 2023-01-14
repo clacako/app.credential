@@ -1,0 +1,316 @@
+{% load static %}
+
+<!-- Header -->
+{% include "general/header.html" %}
+<!-- End header -->
+
+<!-- Start right Content here -->
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <h4 class="mb-4 font-size-18">File Manager</h4> -->
+
+                <div class="d-xl-flex">
+                    <div class="w-100">
+                        <div class="d-md-flex">
+                            <div class="card filemanager-sidebar me-md-2">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="mb-4">
+                                            <div class="mb-3">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-light dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="mdi mdi-plus me-1"></i> Create New
+                                                    </button>
+                                                    
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item btn-show-modal-domain-insert" href="javascript:void(0)">
+                                                            <i class="mdi mdi-album me-1"></i>
+                                                            Domain
+                                                        </a>
+                                                      
+                                                        <a class="dropdown-item btn-show-modal-role-insert" href="javascript:void(0)">
+                                                            <i class="mdi mdi-album me-1"></i>
+                                                            Roles
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <ul class="list-unstyled categories-list">
+                                                <!-- <li>
+                                                    <div class="custom-accordion">
+                                                        <a class="text-body fw-medium py-1 d-flex align-items-center" data-bs-toggle="collapse" href="#application-domain-collapse" role="button" aria-expanded="false" aria-controls="application-domain-collapse">
+                                                            <i class="mdi mdi-folder font-size-16 text-warning me-2"></i>
+                                                            Domains
+                                                            <i class="mdi mdi-chevron-up accor-down-icon ms-auto"></i>
+                                                        </a>
+
+                                                        <div class="collapse show" id="application-domain-collapse">
+                                                            <div class="card border-0 shadow-none ps-2 mb-0">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <div id="ajax-application-domains-list-menu"></div>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li> -->
+
+                                                <li>
+                                                    <div class="custom-accordion">
+                                                        <a class="text-body fw-medium py-1 d-flex align-items-center" data-bs-toggle="collapse" href="#application-roles-collapse" role="button" aria-expanded="false" aria-controls="application-roles-collapse">
+                                                            <i class="mdi mdi-account-key font-size-16 text-primary me-2"></i>
+                                                            Roles
+                                                            <i class="mdi mdi-chevron-up accor-down-icon ms-auto"></i>
+                                                        </a>
+
+                                                        <div class="collapse show" id="application-roles-collapse">
+                                                            <div class="card border-0 shadow-none ps-2 mb-0">
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <div id="ajax-application-roles-menu"></div>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
+                                                        <i class="mdi mdi-inbox text-muted font-size-16 me-2"></i>
+                                                        <span class="me-auto">
+                                                            Inbox
+                                                        </span>
+                                                        <span class="badge bg-success rounded-pill ms-2">01</span>
+                                                    </a>
+                                                </li>
+                                                
+                                                <!-- <li>
+                                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
+                                                        <i class="mdi mdi-dropbox font-size-16 me-2 text-primary"></i> <span class="me-auto">Users</span>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
+                                                        <i class="mdi mdi-share-variant font-size-16 me-2"></i> <span class="me-auto">Shared</span> <i class="mdi mdi-circle-medium text-danger ms-2"></i>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li>
+                                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
+                                                        <i class="mdi mdi-star-outline text-muted font-size-16 me-2"></i> <span class="me-auto">Starred</span>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li>
+                                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
+                                                        <i class="mdi mdi-trash-can text-danger font-size-16 me-2"></i> <span class="me-auto">Trash</span>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li>
+                                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
+                                                        <i class="mdi mdi-cog text-muted font-size-16 me-2"></i> <span class="me-auto">Setting</span><span class="badge bg-success rounded-pill ms-2">01</span>
+                                                    </a>
+                                                </li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="w-100">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <div id="message-application-roles"></div>
+                                            <div id="ajax-application-roles"></div>
+                                        </div>
+    
+                                        <div>
+                                            <div id="message-application-domain"></div>
+                                            <div id="ajax-application-domains"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card filemanager-sidebar ms-lg-2">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h5 class="font-size-15 mb-4">Application Information</h5>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <div class="card border shadow-none mb-2">
+                                    <div class="p-2">
+                                        <div class="d-flex">
+                                            <div class="overflow-hidden me-auto">
+                                                <h5 class="font-size-13 text-truncate mb-1">Host</h5>
+                                                <p class="text-muted mb-0">{{ Application.host }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="card border shadow-none mb-2">
+                                    <div class="p-2">
+                                        <div class="d-flex">
+                                            <div class="overflow-hidden me-auto">
+                                                <h5 class="font-size-13 text-truncate mb-1">EXID</h5>
+                                                <p class="text-muted mb-0">{{ Application.external_id }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="card border shadow-none mb-2">
+                                    <div class="p-2">
+                                        <div class="d-flex">
+                                            <div class="overflow-hidden me-auto">
+                                                <h5 class="font-size-13 text-truncate mb-1">Shortname</h5>
+                                                <p class="text-muted text-truncate mb-0">{{ Application.shortname }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="card border shadow-none mb-2">
+                                    <div class="p-2">
+                                        <div class="d-flex">
+                                            <div class="overflow-hidden me-auto">
+                                                <h5 class="font-size-13 text-truncate mb-1">Email</h5>
+                                                <p class="text-muted mb-0">{{ Application.email }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="card border shadow-none mb-2">
+                                    <div class="p-2">
+                                        <div class="d-flex">
+                                            <div class="overflow-hidden me-auto">
+                                                <h5 class="font-size-13 text-truncate mb-1">Description</h5>
+                                                <p class="text-muted mb-0">{{ Application.description }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div id="message-application-secret-key"></div>
+                                <div id="ajax-application-secret-key-api"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End content -->
+
+<!-- Modals -->
+<!-- Modal domain insert -->
+<div class="modal fade" id="modal-domain-insert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Domain</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="ajax-modal-body-domain-insert"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal role insert -->
+<div class="modal fade" id="modal-role-insert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Role</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="ajax-modal-body-role-insert"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End modals -->
+
+<!-- Modal role update -->
+<div class="modal fade" id="modal-role-update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Role</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="ajax-modal-body-role-update"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End modals -->
+
+<!-- Footer -->
+{% include "general/footer.html" %}
+<!-- End feader -->
+
+
+<script>
+    // Load page
+    xload("ajax-application-secret-key-api", "{% url 'applications:secret-key' app_exid=Application.external_id %}")
+    xload("ajax-application-domains", "{% url 'applications:domains' app_exid=Application.external_id %}")
+    xload("ajax-application-roles-menu", "{% url 'applications:menu-roles' app_exid=Application.external_id %}")
+    xload("ajax-application-roles", "{% url 'applications:roles' app_exid=Application.external_id %}")
+
+
+    // Modal domain insert
+    $(document).on("click", ".btn-show-modal-domain-insert", function() {
+        modal_show(
+            "modal-domain-insert",
+            "ajax-modal-body-domain-insert",
+            "{% url 'domains:app-insert' app_exid=Application.external_id %}"
+        )
+    })
+
+    // Modal role insert
+    $(document).on("click", ".btn-show-modal-role-insert", function() {
+        modal_show(
+            "modal-role-insert",
+            "ajax-modal-body-role-insert",
+            "{% url 'roles:app-insert' app_exid=Application.external_id %}"
+        )
+    })
+
+    // Modal role update
+    $(document).on("click", ".btn-show-modal-role-update", function() {
+        let namespace   = $(this).data("namespace")
+        modal_show(
+            "modal-role-update",
+            "ajax-modal-body-role-update",
+            namespace
+        )
+    })
+</script>

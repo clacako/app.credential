@@ -1,0 +1,98 @@
+{% load static %}
+
+<div class="bg-warning bg-soft p-3 rounded mb-3">
+    <h5 class="font-size-14 text-primary mb-0"><i class="fas fa-exclamation-triangle  me-2"></i>
+        All fields are required, except marked <strong><i>*optional</i></strong>
+    </h5>
+</div>
+
+<div id="message"></div>
+
+<form class="custom-validation" id="form-application-insert">
+    {% csrf_token %}
+
+    <div class="col-md-12">
+        <div class="mb-4">
+            <label for="validationCustom01" class="form-label">Application Host</label>
+            <p class="text-muted">
+                Please note: if the <code>alwaysShow</code> option is enabled, the
+                <code>threshold</code> option is ignored.
+            </p>
+            {{ FormInsert.host }}
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="mb-4">
+            <label for="validationCustom01" class="form-label">Application Shortname</label>
+            <p class="text-muted">
+                Please note: if the <code>alwaysShow</code> option is enabled, the
+                <code>threshold</code> option is ignored.
+            </p>
+            {{ FormInsert.shortname }}
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="mb-4">
+            <label for="validationCustom01" class="form-label">Email</label>
+            <p class="text-muted">
+                Please note: if the <code>alwaysShow</code> option is enabled, the
+                <code>threshold</code> option is ignored.
+            </p>
+            {{ FormInsert.email }}
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="mb-4">
+            <label for="validationCustom01" class="form-label">Description</label>
+            <p class="text-muted">
+                Please note: if the <code>alwaysShow</code> option is enabled, the
+                <code>threshold</code> option is ignored.
+            </p>
+            {{ FormInsert.description }}
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-lg btn-outline-success waves-effect waves-light btn-save" type="submit">
+        Save
+    </button>
+</form>
+
+<!-- Form validation -->
+<script src="{% static 'assets/libs/parsleyjs/parsley.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/form-validation.init.js' %}"></script>
+
+<script src="{% static 'assets/libs/select2/js/select2.min.js' %}"></script>
+
+<script>
+    xpost(
+        "form-application-insert",
+        "{% url 'applications:insert' %}",
+        function(response) {
+            if (response.is_success) {
+                console.log(response.message)
+                xload("ajax-list", "{% url 'applications:list' %}")
+                // xload("menu", "")
+                message = alert_message("success", "Message", response.message, "<br /> Application saved")
+            } else {
+                console.log(response.message)
+                message = alert_message("danger", "Whoops", response.message)
+            }
+            $("#message").html(message)
+        }
+    )
+</script>

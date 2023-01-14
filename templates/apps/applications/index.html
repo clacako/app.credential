@@ -1,0 +1,106 @@
+<!-- Header -->
+{% include "general/header.html" %}
+<!-- End header -->
+
+<!-- Start right Content here -->
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <button 
+                            type="button"
+                            class="btn btn-sm btn-outline-info waves-effect waves-light btn-show-modal-application-insert"
+                        >
+                            Add New Application
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div id="ajax-list"></div>
+                </div>
+
+                <div class="col-12">
+                    <div id="ajax-details"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End content -->
+
+<!-- Offcanvas -->
+<!-- Offcanvas details product -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-application-details" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Details Application</h5>
+        <button type="button" class="btn-close text-reset offcanvas-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <div id="ajax-offcanvas-body-update"></div>
+    </div>
+</div>
+<!-- End offcanvas -->
+
+<!-- Modals -->
+<!-- Modal application insert -->
+<div class="modal fade" id="modal-application-insert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Application</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="ajax-modal-body-insert"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal application update -->
+<div class="modal fade" id="modal-application-update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content modal-application-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="ajax-modal-body-application-update"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End modals -->
+
+<!-- Footer -->
+{% include "general/footer.html" %}
+<!-- End footer -->
+
+<script>
+    xload("ajax-list", "{% url 'applications:list' %}")
+
+    // Modal Application Insert
+    $(document).on("click", ".btn-show-modal-application-insert", function() {
+        modal_show("modal-application-insert", "ajax-modal-body-insert", "{% url 'applications:insert' %}")
+    })
+
+    // Modal Application Update
+    $(document).on("click", ".btn-show-modal-application-update", function() {
+        let namespace   = $(this).data("namespace")
+        modal_show("modal-application-update", "ajax-modal-body-application-update", namespace)
+    })
+
+    // Offcanvas Application update
+    // $(document).on("click", ".btn-modal-application-update", function() {
+    //     let namespace   = $(this).data("namespace")
+    //     // offcanvas_toggle("offcanvas-application-update", "ajax-offcanvas-body-update", namespace)
+    //     modal_show("modal-application-update", "ajax-modal-body-application-update", namespace)
+    // })
+</script>
